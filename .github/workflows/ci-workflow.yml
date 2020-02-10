@@ -3,8 +3,11 @@ name: run in docker
 on: [push]
 
 jobs:
-  check_conda_within_container:
+  install_tectonic_within_container:
     runs-on: ubuntu-18.04
     container: continuumio/miniconda3:4.7.12
     steps:
       - run: which conda
+      - run: conda list
+      - run: conda install -c conda-forge tectonic
+      - run: which tectonic
