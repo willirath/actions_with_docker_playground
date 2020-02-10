@@ -3,12 +3,8 @@ name: run in docker
 on: [push]
 
 jobs:
-  check_conda_with_uses:
+  check_conda_within_container:
     runs-on: ubuntu-18.04
+    container: continuumio/miniconda3:4.7.12
     steps:
-    - uses: docker://continuumio/miniconda3:4.7.12
-    - run: docker exec -it continuumio/miniconda3:4.7.12 bash -c "which conda"
-  check_conda_without:
-    runs-on: ubuntu-18.04
-    steps:
-    - run: which conda
+      - run: which conda
